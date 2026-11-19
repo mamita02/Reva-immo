@@ -673,7 +673,6 @@ function loop() {
     render();
   }
   requestAnimationFrame(loop);
-  requestAnimationFrame(carouselLoop);
 }
 
 /* =========================================================================
@@ -686,6 +685,12 @@ const SERVICES = [
   { t: 'Toiture & charpente', d: 'Zinc, tuile ou bac acier : une couverture durable, garantie dix ans.', y: '10 ans', shot: { s: 2.9, p: V(-14, 13, -16), t: V(-3, 6, 0), dusk: 0.45 } },
   { t: 'Architecture intérieure', d: "Cuisines, éclairage et matériaux pensés avec nos architectes d'intérieur.", y: 'Sur mesure', shot: { s: 5.5, p: V(-3.4, 1.9, 7.5), t: V(-3.5, 1.4, -3) } },
   { t: 'Piscines & extérieurs', d: 'Terrasses en pierre, piscines, jardins méditerranéens et éclairage paysager.', y: '80 piscines', shot: { s: 5.5, p: V(18, 2.4, 19), t: V(5, 1, 10) } },
+  { t: 'Extensions', d: 'Agrandir sans déménager : surélévation, véranda ou nouvelle aile.', y: 'Permis inclus', shot: { s: 5.5, p: V(-24, 7, -18), t: V(-2, 3, 0), dusk: 0.5 } },
+  { t: 'Aménagement paysager', d: 'Jardins, allées en pierre et éclairage pensés comme une pièce à vivre.', y: 'Sur mesure', shot: { s: 5.5, p: V(9, 1.7, 17), t: V(3, 1.2, 7) } },
+  { t: 'Façades & enduits', d: 'Enduits à la chaux, bardages et ravalements qui traversent le temps.', y: 'Garantie 10 ans', shot: { s: 2.25, p: V(15, 5, 15), t: V(0, 2.2, 4), dusk: 0.2 } },
+  { t: 'Menuiseries', d: 'Baies aluminium, portes en bois massif et vitrages à isolation renforcée.', y: 'Alu & bois', shot: { s: 5.5, p: V(-6, 2.6, 12.5), t: V(-3.5, 1.8, 5) } },
+  { t: 'Suivi de chantier', d: 'Un conducteur de travaux dédié et un compte rendu chaque semaine.', y: '1 interlocuteur', shot: { s: 1.35, p: V(-30, 16, 22), t: V(-4, 2, -2), dusk: 0.1 } },
+  { t: 'Clés en main', d: 'Du permis à la remise des clés : un seul contrat et un prix ferme.', y: 'Prix ferme', shot: { s: 5.5, p: V(30, 14, 36), t: V(0, 3, 0), dusk: 0.85 } },
 ];
 const LISTINGS = [
   { t: 'Villa Les Oliviers', loc: 'Aix-en-Provence (13)', m2: 240, ch: 5, ter: '1 800 m²', price: '180 000 000 XOF', tag: 'Disponible', ok: true, shot: { s: 5.5, p: V(24, 9, 26), t: V(0, 3, 2) } },
@@ -693,29 +698,27 @@ const LISTINGS = [
   { t: 'Domaine du Lauzet', loc: 'Gordes (84)', m2: 280, ch: 6, ter: '3 100 m²', price: '400 000 000 XOF', tag: 'Vendu', shot: { s: 5.5, p: V(0, 34, 30), t: V(1, 0, 3), dusk: 0.75 } },
 ];
 
-// Anneau de 12 cadres (les 6 services, deux fois) : on en voit 5 à la fois sur toute la largeur.
+// Anneau de 12 cadres, chacun avec sa propre image : on en voit 5 à la fois sur toute la largeur.
 // Les cadres hors du centre sont transparents et deviennent opaques quand leur tour arrive.
-const RING_COUNT = 12;
+// Rotation uniquement par glissement horizontal (souris, doigt, pavé tactile) — pas au scroll vertical.
 const ring = $('#ring'), carouselEl = $('#carousel'), idxEl = $('#carouselIndex');
-let ringRot = 0, ringTarget = 0, dragOffset = 0;
+let ringRot = 0, ringTarget = 0, dragging = false;
 function buildCarousel(images) {
-  ring.innerHTML = Array.from({ length: RING_COUNT }, (_, i) => {
-    const k = i % SERVICES.length, sv = SERVICES[k];
-    return `
+  ring.innerHTML = SERVICES.map((sv, k) => `
     <article class="card" data-i="${k}">
-      <img src="${images[k]}" alt="${sv.t}" />
+      <img src="${images[k]}" alt="${sv.t}" draggable="false" />
       <div class="card-body">
-        <span class="num">0${k + 1} — SERVICE</span>
+        <span class="num">${String(k + 1).padStart(2, '0')} — SERVICE</span>
         <h3>${sv.t}</h3>
         <p>${sv.d}</p>
         <div class="card-foot"><em>${sv.y}</em><span>Détails →</span></div>
       </div>
-    </article>`;
-  }).join('');
+    </article>`).join('');
 }
-const cardAngle = 360 / RING_COUNT;
+const cardAngle = 360 / SERVICES.length;
+const snap = () => { ringTarget = Math.round(ringTarget / cardAngle) * cardAngle; };
 function layoutCarousel() {
-  const R = innerWidth < 760 ? 430 : Math.min(840, innerWidth * 0.56);
+  const R = innerWidth < 760 ? Math.max(420, innerWidth * 1.28) : Math.min(840, innerWidth * 0.56);   // mobile : les voisines dépassent juste sur les bords
   const cards = ring.children;
   let best = 0, bestD = 1e9;
   for (let i = 0; i < cards.length; i++) {
@@ -723,30 +726,56 @@ function layoutCarousel() {
     const norm = ((a % 360) + 540) % 360 - 180;
     const d = Math.abs(norm);
     cards[i].style.transform = `rotateY(${a}deg) translateZ(${R}px)`;
-    // opaque au centre, transparent sur les côtés, invisible derrière
     const op = d < 8 ? 1 : d < 22 ? lerp(1, 0.38, (d - 8) / 14) : d < 80 ? lerp(0.38, 0, (d - 22) / 58) : 0;
     cards[i].style.opacity = op.toFixed(3);
-    cards[i].style.pointerEvents = d < 15 ? 'auto' : 'none';
+    cards[i].style.zIndex = String(200 - Math.round(d));   // la carte du centre toujours devant
+    cards[i].style.pointerEvents = d < 15 && !dragging ? 'auto' : 'none';
     if (d < bestD) { bestD = d; best = i; }
   }
   ring.style.transform = `translateZ(${-R}px) rotateX(-3deg)`;
-  idxEl.textContent = `0${(best % SERVICES.length) + 1} / 0${SERVICES.length}`;
+  idxEl.textContent = `${String(best + 1).padStart(2, '0')} / ${SERVICES.length}`;
 }
 function carouselLoop() {
-  const sec = $('#services'); const r = sec.getBoundingClientRect();
-  const p = clamp(-r.top / (r.height - innerHeight));
-  ringTarget = -Math.round(p * (SERVICES.length - 1)) * cardAngle + dragOffset;   // un cadre à la fois
-  ringRot += (ringTarget - ringRot) * 0.09;
+  ringRot += (ringTarget - ringRot) * (dragging ? 0.35 : 0.1);
   layoutCarousel();
   requestAnimationFrame(carouselLoop);
 }
 {
-  let down = false, x0 = 0, o0 = 0;
-  carouselEl.addEventListener('pointerdown', (e) => { down = true; x0 = e.clientX; o0 = dragOffset; carouselEl.setPointerCapture(e.pointerId); });
-  carouselEl.addEventListener('pointermove', (e) => { if (down) dragOffset = o0 + (e.clientX - x0) * 0.12; });
-  carouselEl.addEventListener('pointerup', () => { down = false; dragOffset = Math.round(dragOffset / cardAngle) * cardAngle; });
-  $('#prev').onclick = () => (dragOffset += cardAngle);
-  $('#next').onclick = () => (dragOffset -= cardAngle);
+  const DEG_PER_PX = 0.16;
+  let x0 = 0, lastX = 0, lastT = 0, vel = 0, startTarget = 0;
+  carouselEl.addEventListener('pointerdown', (e) => {
+    dragging = true; x0 = lastX = e.clientX; lastT = performance.now(); vel = 0; startTarget = ringTarget;
+    carouselEl.setPointerCapture(e.pointerId); carouselEl.classList.add('grabbing');
+  });
+  carouselEl.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const now = performance.now();
+    vel = (e.clientX - lastX) / Math.max(1, now - lastT); lastX = e.clientX; lastT = now;
+    ringTarget = startTarget + (e.clientX - x0) * DEG_PER_PX;
+  });
+  const end = () => {
+    if (!dragging) return;
+    dragging = false; carouselEl.classList.remove('grabbing');
+    ringTarget += clamp(vel * 80, -45, 45);   // élan : un geste rapide fait tourner plus loin
+    snap();
+  };
+  carouselEl.addEventListener('pointerup', end);
+  carouselEl.addEventListener('pointercancel', end);
+  // pavé tactile / molette horizontale (gauche ↔ droite) ; la molette verticale fait défiler la page normalement
+  let wheelTimer;
+  carouselEl.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    ringTarget -= e.deltaX * DEG_PER_PX * 0.6;
+    clearTimeout(wheelTimer); wheelTimer = setTimeout(snap, 140);
+  }, { passive: false });
+  $('#prev').onclick = () => { ringTarget += cardAngle; snap(); };
+  $('#next').onclick = () => { ringTarget -= cardAngle; snap(); };
+  addEventListener('keydown', (e) => {
+    const r = carouselEl.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    if (e.key === 'ArrowLeft') { ringTarget += cardAngle; snap(); }
+    if (e.key === 'ArrowRight') { ringTarget -= cardAngle; snap(); }
+  });
 }
 
 function buildListings(images) {
@@ -795,9 +824,9 @@ async function boot() {
     label.textContent = labels[Math.min(labels.length - 1, Math.floor(k * labels.length))];
     await frame();
   }
-  buildCarousel(out.slice(0, 6));
-  buildListings(out.slice(6, 9));
-  $('#contactBg').style.backgroundImage = `url(${out[9]})`;
+  buildCarousel(out.slice(0, SERVICES.length));
+  buildListings(out.slice(SERVICES.length, SERVICES.length + 3));
+  $('#contactBg').style.backgroundImage = `url(${out[SERVICES.length + 3]})`;
 
   renderer.setClearColor(0x000000, 1);
   resize(); target = current = heroProgress();
