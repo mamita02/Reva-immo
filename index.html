@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>REVA Immobilier — Filiale Habiter.Biz</title>
+  <meta name="description" content="ASSISE construit des maisons d'architecte, de la première pierre à la remise des clés." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ PRELOADER ============ -->
+  <div id="loader">
+    <div class="loader-inner">
+      <img class="loader-logo" src="assets/logo-reva.png" alt="REVA Immobilier" />
+      <p class="loader-label">Pose de la première pierre…</p>
+      <div class="loader-bar"><span></span></div>
+      <p class="loader-pct">0%</p>
+    </div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="#top" class="brand"><img src="assets/logo-reva.png" alt="REVA Immobilier" /></a>
+    <nav class="links">
+      <a href="#top">Accueil</a>
+      <div class="dd">
+        <a href="#biens">Achetez <i class="caret"></i></a>
+        <div class="dd-menu">
+          <a href="#biens">Ventes directes</a>
+          <a href="#biens">Biens en VEFA</a>
+          <a href="#biens">Terrains</a>
+        </div>
+      </div>
+      <a href="#contact">Vendez</a>
+      <div class="dd">
+        <a href="#contact">Financement <i class="caret"></i></a>
+        <div class="dd-menu">
+          <a href="#contact">Co-financement</a>
+          <a href="#contact">Prêt immobilier</a>
+        </div>
+      </div>
+      <a href="#contact">Diaspora</a>
+      <a href="#studio">Qui sommes-nous ?</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <span class="lang"><b>FR</b> / EN</span>
+      <a href="#contact" class="btn btn-gold">Démarrer un projet</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO : CONSTRUCTION 3D AU SCROLL ============ -->
+  <section id="top" class="hero">
+    <div class="hero-sticky">
+      <div class="scene-wrap" id="sceneWrap">
+        <canvas id="scene"></canvas>
+        <div class="scene-vignette"></div>
+      </div>
+      <div class="grain"></div>
+
+      <!-- Textes par étape -->
+      <div class="stage-texts">
+        <article class="stage-text left" data-stage="0">
+          <p class="kicker"><span>01</span> — Fondations</p>
+          <h1>Chaque maison<br/>commence <em>par<br/>le sol.</em></h1>
+          <p class="lead">Terrain implanté, acier posé, béton coulé : la première ligne est tracée. Faites défiler et regardez-la grandir.</p>
+        </article>
+        <article class="stage-text right" data-stage="1">
+          <p class="kicker"><span>02</span> — Structure</p>
+          <h2>Brique après brique,<br/><em>étage par étage.</em></h2>
+          <p class="lead">Une maçonnerie traditionnelle, montée rang après rang par nos compagnons, sur une ossature béton calculée au millimètre.</p>
+        </article>
+        <article class="stage-text left" data-stage="2">
+          <p class="kicker"><span>03</span> — Toiture &amp; finitions</p>
+          <h2>Bâtie jusqu'au<br/><em>moindre détail.</em></h2>
+          <p class="lead">Enduit à la chaux, bardage bois, toiture zinc à joint debout et menuiseries aluminium : rien n'est laissé au hasard.</p>
+        </article>
+        <article class="stage-text right" data-stage="3">
+          <p class="kicker"><span>04</span> — Intérieurs</p>
+          <h2>Entrez dans votre<br/><em>prochain chapitre.</em></h2>
+          <p class="lead">Des volumes ouverts, une lumière pensée pièce par pièce et une cuisine qui devient le cœur de la maison.</p>
+        </article>
+        <article class="stage-text left" data-stage="4">
+          <p class="kicker"><span>05</span> — Extérieurs</p>
+          <h2>Des espaces faits<br/><em>pour la lumière.</em></h2>
+          <p class="lead">Terrasse en pierre, piscine à débordement, jardin méditerranéen : la maison se prolonge dehors.</p>
+        </article>
+        <article class="stage-text left" data-stage="5">
+          <p class="kicker"><span>06</span> — Remise des clés</p>
+          <h2>Bienvenue<br/><em>chez vous.</em></h2>
+          <p class="lead">De la première pierre à la remise des clés. Une équipe, un interlocuteur, une promesse.</p>
+          <a href="#contact" class="btn btn-accent">Démarrer un projet →</a>
+        </article>
+      </div>
+
+      <!-- HUD -->
+      <div class="hud" id="hud">
+        <div class="hud-stats">
+          <div><small>Jour</small><b id="hudDay">001</b></div>
+          <div><small>Avancement</small><b id="hudPct">0%</b></div>
+          <div><small>Phase</small><b id="hudPhase">Fondations</b></div>
+          <div class="hide-sm"><small>Briques posées</small><b id="hudBricks">0</b></div>
+        </div>
+        <ol class="hud-steps" id="hudSteps">
+          <li class="active"><i></i>Fondations</li>
+          <li><i></i>Structure</li>
+          <li><i></i>Toiture</li>
+          <li><i></i>Intérieurs</li>
+          <li><i></i>Extérieurs</li>
+          <li><i></i>Clés</li>
+        </ol>
+        <div class="hud-plan">
+          <svg viewBox="0 0 160 110" class="plan">
+            <path id="planPath" pathLength="1" d="M8 8 H152 V102 H8 Z M8 58 H70 M70 8 V102 M70 40 H110 M110 40 V102 M110 70 H152 M30 58 V102 M70 85 H90 M125 8 V40 M8 30 H40" />
+          </svg>
+          <p><span>Plan — Villa T5</span><span>240 m²</span></p>
+          <div class="hud-progress"><span id="hudBar"></span></div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" id="scrollHint"><span></span>Faites défiler</div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES : CARROUSEL 3D ============ -->
+  <section id="services" class="services">
+    <div class="services-sticky">
+      <p class="eyebrow center">Ce que nous faisons</p>
+      <h2 class="section-title center">Six façons <em>de bâtir.</em></h2>
+      <div class="carousel" id="carousel">
+        <div class="ring" id="ring"></div>
+      </div>
+      <div class="carousel-ui">
+        <button class="round" id="prev" aria-label="Précédent">←</button>
+        <span id="carouselIndex">01 / 06</span>
+        <button class="round" id="next" aria-label="Suivant">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BIENS ============ -->
+  <section id="biens" class="listings">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Biens disponibles</p>
+          <h2 class="section-title">Prêtes à <em>vivre.</em></h2>
+        </div>
+        <p class="muted">Des maisons livrées clés en main, construites par nos équipes et vendues sans intermédiaire.</p>
+      </div>
+      <div class="grid-listings" id="listings"></div>
+    </div>
+  </section>
+
+  <!-- ============ STUDIO / CHIFFRES ============ -->
+  <section id="studio" class="studio">
+    <div class="studio-bg" id="studioBg"></div>
+    <div class="container studio-inner">
+      <div class="reveal">
+        <p class="eyebrow">Qui sommes-nous ?</p>
+        <h2 class="section-title">Un seul métier :<br/><em>la vente.</em></h2>
+        <p class="muted">Filiale d'Habiter.Biz, premier réseau sénégalais de l'immobilier, REVA est spécialisée dans la vente de biens au Sénégal et à l'international. Là où d'autres multiplient les services, location ou gestion, nous avons fait un choix : nous consacrer exclusivement à la vente, pour vous offrir un service d'excellence.</p>
+        <a href="https://www.reva.sn/qui-sommes-nous/" class="btn btn-gold studio-btn">En savoir plus →</a>
+      </div>
+      <div class="stats">
+        <div class="stat reveal"><b data-count="340">0</b><span>Maisons livrées</span></div>
+        <div class="stat reveal"><b data-count="35">0</b><span>Années d'expérience</span></div>
+        <div class="stat reveal"><b data-count="98" data-suffix="%">0</b><span>Clients satisfaits</span></div>
+        <div class="stat reveal"><b data-count="10" data-suffix=" ans">0</b><span>Garantie décennale</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="contact">
+    <div class="contact-bg" id="contactBg"></div>
+    <div class="container contact-inner">
+      <div class="reveal">
+        <h2 class="huge">Construisons<br/><em>la vôtre.</em></h2>
+        <p class="muted">Parlez-nous de votre terrain, de vos envies et de votre budget. Un architecte vous rappelle sous 48 h.</p>
+        <ul class="contact-info">
+          <li><small>Adresse</small>Fann Résidence, Immeuble Nelly, 2ème étage, Dakar</li>
+          <li><small>Email</small><a href="mailto:info@reva.sn">info@reva.sn</a><br/><a href="mailto:contact@reva.sn">contact@reva.sn</a></li>
+          <li><small>Téléphone</small><a href="tel:+221338212082">+221 33 821 20 82</a></li>
+          <li><small>Mobile</small><a href="tel:+221781752323">+221 78 175 23 23</a></li>
+        </ul>
+      </div>
+      <form class="form reveal" id="form">
+        <div class="row">
+          <label>Nom<input required name="nom" placeholder="Votre nom" /></label>
+          <label>Téléphone<input name="tel" placeholder="+221 …" /></label>
+        </div>
+        <label>Email<input required type="email" name="email" placeholder="vous@exemple.fr" /></label>
+        <div class="row">
+          <label>Projet
+            <select name="projet">
+              <option>Maison neuve</option><option>Rénovation</option><option>Extension</option>
+              <option>Piscine &amp; extérieurs</option><option>Achat d'un bien</option>
+            </select>
+          </label>
+          <label>Budget
+            <select name="budget">
+              <option>&lt; 100 M XOF</option><option>100 – 250 M XOF</option><option>250 – 500 M XOF</option><option>&gt; 500 M XOF</option>
+            </select>
+          </label>
+        </div>
+        <label>Message<textarea name="message" rows="3" placeholder="Terrain, surface, délais…"></textarea></label>
+        <div class="form-actions">
+          <button class="btn btn-gold" type="submit">Être rappelé →</button>
+          <a class="btn btn-ghost" href="#contact">Visiter un chantier</a>
+        </div>
+        <p class="form-ok" id="formOk">Merci ! Nous revenons vers vous sous 48 h.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="f-brand">
+        <img src="assets/logo-reva.png" alt="REVA Immobilier" />
+        <p>Filiale d'Habiter.Biz, premier réseau sénégalais de l'immobilier. Spécialiste exclusif de la vente de biens au Sénégal et à l'international.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.2V10H7v4h3v6h4v-6h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9zM17 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1zm4 2.2A5.6 5.6 0 0 0 15.8 3H8.2A5.6 5.6 0 0 0 3 8.2v7.6A5.6 5.6 0 0 0 8.2 21h7.6a5.6 5.6 0 0 0 5.2-5.2zM19.3 15.8a3.6 3.6 0 0 1-3.5 3.5H8.2a3.6 3.6 0 0 1-3.5-3.5V8.2a3.6 3.6 0 0 1 3.5-3.5h7.6a3.6 3.6 0 0 1 3.5 3.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M5 3.5A2 2 0 1 1 5 7.5a2 2 0 0 1 0-4zM3.3 9h3.4v11H3.3zM9 9h3.3v1.5c.5-.9 1.7-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.4V20h-3.4v-5.2c0-1.3 0-2.9-1.8-2.9s-2.1 1.4-2.1 2.8V20H9z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#top">Accueil</a></li>
+          <li><a href="#contact">Vendez</a></li>
+          <li><a href="#contact">Financement</a></li>
+          <li><a href="#contact">Diaspora</a></li>
+          <li><a href="#studio">Qui sommes-nous ?</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Achetez</h4>
+        <ul>
+          <li><a href="#biens">Ventes directes</a></li>
+          <li><a href="#biens">Biens en VEFA</a></li>
+          <li><a href="#biens">Terrains</a></li>
+          <li><a href="#contact">Co-financement</a></li>
+          <li><a href="#contact">Prêt immobilier</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="f-contact">
+          <li>Fann Résidence, Immeuble Nelly,<br/>2ème étage, Dakar</li>
+          <li><a href="tel:+221338212082">+221 33 821 20 82</a></li>
+          <li><a href="tel:+221781752323">+221 78 175 23 23</a></li>
+          <li><a href="mailto:info@reva.sn">info@reva.sn</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-gold">Estimer mon bien</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 REVA Immobilier — Filiale Habiter.Biz. Tous droits réservés.</span>
+      <span><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a> · <a href="#">CGV</a></span>
+    </div>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
