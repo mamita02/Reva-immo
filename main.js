@@ -3,7 +3,7 @@ import * as THREE from './vendor/three.module.js';
 /* =========================================================================
    ASSISE — Construction 3D pilotée par le scroll
    s (0 → 6) : 0 Fondations · 1 Structure · 2 Toiture · 3 Intérieurs
-               4 Extérieurs · 5 Remise des clés
+   4 Extérieurs · 5 Remise des clés
    ========================================================================= */
 
 const $ = (s, el = document) => el.querySelector(s);

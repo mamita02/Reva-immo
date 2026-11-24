@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biens en VEFA — Programmes neufs sur plan à Dakar | REVA Immobilier</title>
+  <meta name="description" content="Résidences neuves en VEFA à Dakar : sur plan, en construction ou en finition. Comparez les programmes, prix, avancement et localisation." />
+  <meta property="og:title" content="Biens en VEFA — Programmes neufs sur plan à Dakar | REVA Immobilier" />
+  <meta property="og:description" content="Résidences neuves en VEFA à Dakar : sur plan, en construction ou en finition. Comparez les programmes, prix, avancement et localisation." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="catalogue.css" />
+</head>
+<body class="cat" data-cat="vefa">
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="index.html" class="brand"><img src="assets/logo-reva.png" alt="REVA Immobilier" /></a>
+    <nav class="links">
+      <a href="index.html">Accueil</a>
+      <div class="dd">
+        <a href="ventes-directes.html" class="on">Achetez <i class="caret"></i></a>
+        <div class="dd-menu">
+          <a href="ventes-directes.html">Ventes directes</a>
+          <a href="biens-en-vefa.html" class="on">Biens en VEFA</a>
+          <a href="terrains.html">Terrains</a>
+        </div>
+      </div>
+      <a href="index.html#contact">Vendez</a>
+      <div class="dd">
+        <a href="index.html#contact">Financement <i class="caret"></i></a>
+        <div class="dd-menu">
+          <a href="index.html#contact">Co-financement</a>
+          <a href="index.html#contact">Prêt immobilier</a>
+        </div>
+      </div>
+      <a href="index.html#contact">Diaspora</a>
+      <a href="index.html#studio">Qui sommes-nous ?</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <span class="lang"><b>FR</b> / EN</span>
+      <a href="index.html#contact" class="btn btn-gold">Démarrer un projet</a>
+      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+
+  <nav class="m-menu" id="m-menu" aria-label="Menu mobile">
+    <button class="burger close" id="m-close" type="button" aria-label="Fermer le menu" style="display:grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <a href="index.html">Accueil</a>
+    <a href="ventes-directes.html">Achetez</a>
+    <a class="sub" href="ventes-directes.html">Ventes directes</a>
+    <a class="sub on" href="biens-en-vefa.html">Biens en VEFA</a>
+    <a class="sub" href="terrains.html">Terrains</a>
+    <a href="index.html#contact">Vendez</a>
+    <a href="index.html#contact">Financement</a>
+    <a href="index.html#contact">Diaspora</a>
+    <a href="index.html#studio">Qui sommes-nous ?</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="c-hero">
+    <div class="container">
+      <div>
+        <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span>/</span><a href="ventes-directes.html">Achetez</a><span>/</span><b>Biens en VEFA</b></nav>
+        <p class="eyebrow">Achetez — Biens en VEFA</p>
+        <h1>Le neuf,<br/><em>avant tout le monde.</em></h1>
+        <p class="lead">Achetez sur plan dans les résidences les plus attendues de Dakar : Almadies, Mermoz, Point E, Mamelles… Suivez chaque programme de la première pierre à la livraison.</p>
+        <div class="steps-pills">
+            <button type="button" data-etape="Sur plan"><i></i>Sur plan <b>0</b></button>
+            <button type="button" data-etape="En construction"><i></i>En construction <b>0</b></button>
+            <button type="button" data-etape="En finition"><i></i>En finition <b>0</b></button>
+          </div>
+        <div class="hero-stats"><div><b data-stat="count">—</b><small>Programmes</small></div><div><b data-stat="chantier">—</b><small>En construction</small></div><div><b data-stat="quartiers">—</b><small>Quartiers</small></div></div>
+        <div class="hero-cta">
+          <a href="#catalogue" class="btn btn-gold btn-lg">Voir les biens ↓</a>
+          <a href="https://wa.me/221781752323" target="_blank" rel="noopener" class="btn btn-line btn-lg">Parler à un conseiller</a>
+        </div>
+      </div>
+      <div class="collage" id="collage" aria-hidden="false"></div>
+    </div>
+  </section>
+
+  <!-- recherche rapide -->
+  <form class="quick" id="quick" role="search">
+    <label>Où ?<input name="q" list="quick-list" placeholder="Almadies, Résidence, Point E…" autocomplete="off" /></label>
+    <datalist id="quick-list"></datalist>
+    <label>Type<select name="type"></select></label>
+    <label>Budget max<select name="budget"></select></label>
+    <button class="btn btn-gold" type="submit">Rechercher</button>
+  </form>
+
+  <!-- ============ AVANTAGES ============ -->
+  <section class="perks"><div class="container"><article class="perk rv"><span class="ico">①</span><div><h3>Paiement échelonné</h3><p>Avec la VEFA, vous réglez votre bien par étapes, au rythme de l'avancement des travaux.</p></div></article><article class="perk rv"><span class="ico">②</span><div><h3>Le meilleur prix</h3><p>Acheter tôt, c'est souvent profiter des prix de lancement et du choix des meilleurs lots.</p></div></article><article class="perk rv"><span class="ico">③</span><div><h3>Un logement neuf</h3><p>Des résidences modernes : ascenseur, sécurité, groupe électrogène, parking selon les programmes.</p></div></article></div></section>
+
+  <!-- ============ CATALOGUE ============ -->
+  <section class="shop" id="catalogue">
+    <div class="container">
+      <div class="shop-head rv">
+        <div>
+          <p class="eyebrow">Biens en VEFA</p>
+          <h2>Programmes <em>neufs.</em></h2>
+        </div>
+      </div>
+
+      <div class="shop-layout">
+        <aside class="filters" id="filters" aria-label="Filtres">
+          <div class="filters-top"><h3>Filtrer</h3><button class="link-btn" type="button" id="f-reset">Réinitialiser</button></div>
+          <div class="filters-apply"><button class="btn btn-green" type="button" id="f-apply">Voir les <span id="f-apply-n">0</span> biens</button></div>
+        </aside>
+        <div class="filters-veil" id="filters-veil"></div>
+
+        <div class="results">
+          <div class="toolbar">
+            <p class="count" id="count" aria-live="polite"></p>
+            <div class="tools">
+              <button class="btn btn-outline btn-filters" type="button" id="btn-filters">Filtres <span id="f-badge"></span></button>
+              <label class="select"><span class="sr">Trier par</span><select id="sort"></select></label>
+              <div class="views" role="group" aria-label="Affichage">
+                <button type="button" data-view="grid" aria-label="Grille"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></button>
+                <button type="button" data-view="list" aria-label="Liste"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="5" width="6" height="5" rx="1.2"/><rect x="4" y="14" width="6" height="5" rx="1.2"/><path d="M13 7h7M13 16h7"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="pills" id="pills"></div>
+          <div class="grid" id="grid"></div>
+          <div class="more" id="more" hidden>
+            <p id="more-txt"></p>
+            <div class="bar"><span id="more-bar"></span></div>
+            <button class="btn btn-outline" type="button" id="more-btn">Afficher plus de biens</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPEL À L'ACTION ============ -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-box rv">
+        <div>
+          <h2>Vous ne trouvez pas<br/><em>le bien idéal ?</em></h2>
+          <p>Confiez-nous votre recherche : quartier, budget, surface. Nos conseillers vous envoient les biens qui correspondent, y compris ceux qui ne sont pas encore en ligne.</p>
+        </div>
+        <div class="acts">
+          <a class="btn btn-gold" href="index.html#contact">Confier ma recherche →</a>
+          <a class="btn btn-line" href="https://wa.me/221781752323" target="_blank" rel="noopener">WhatsApp · +221 78 175 23 23</a>
+          <a class="btn btn-line" href="tel:+221338212082">Bureau · +221 33 821 20 82</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="f-brand">
+        <img src="assets/logo-reva.png" alt="REVA Immobilier" />
+        <p>Filiale d'Habiter.Biz, premier réseau sénégalais de l'immobilier. Spécialiste exclusif de la vente de biens au Sénégal et à l'international.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.2V10H7v4h3v6h4v-6h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9zM17 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1zm4 2.2A5.6 5.6 0 0 0 15.8 3H8.2A5.6 5.6 0 0 0 3 8.2v7.6A5.6 5.6 0 0 0 8.2 21h7.6a5.6 5.6 0 0 0 5.2-5.2zM19.3 15.8a3.6 3.6 0 0 1-3.5 3.5H8.2a3.6 3.6 0 0 1-3.5-3.5V8.2a3.6 3.6 0 0 1 3.5-3.5h7.6a3.6 3.6 0 0 1 3.5 3.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M5 3.5A2 2 0 1 1 5 7.5a2 2 0 0 1 0-4zM3.3 9h3.4v11H3.3zM9 9h3.3v1.5c.5-.9 1.7-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.4V20h-3.4v-5.2c0-1.3 0-2.9-1.8-2.9s-2.1 1.4-2.1 2.8V20H9z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="index.html#contact">Vendez</a></li>
+          <li><a href="index.html#contact">Financement</a></li>
+          <li><a href="index.html#contact">Diaspora</a></li>
+          <li><a href="index.html#studio">Qui sommes-nous ?</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Achetez</h4>
+        <ul>
+          <li><a href="ventes-directes.html">Ventes directes</a></li>
+          <li><a href="biens-en-vefa.html">Biens en VEFA</a></li>
+          <li><a href="terrains.html">Terrains</a></li>
+          <li><a href="index.html#contact">Co-financement</a></li>
+          <li><a href="index.html#contact">Prêt immobilier</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="f-contact">
+          <li>Fann Résidence, Immeuble Nelly,<br/>2ème étage, Dakar</li>
+          <li><a href="tel:+221338212082">+221 33 821 20 82</a></li>
+          <li><a href="tel:+221781752323">+221 78 175 23 23</a></li>
+          <li><a href="mailto:info@reva.sn">info@reva.sn</a></li>
+        </ul>
+        <a href="index.html#contact" class="btn btn-gold">Estimer mon bien</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 REVA Immobilier — Filiale Habiter.Biz. Tous droits réservés.</span>
+      <span><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a> · <a href="#">CGV</a></span>
+    </div>
+  </footer>
+
+  <!-- ============ FICHE RAPIDE ============ -->
+  <div class="qv" id="qv" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="qv-bg"></div>
+    <div class="qv-box"></div>
+  </div>
+
+  <!-- ============ VISIONNEUSE ============ -->
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Visionneuse de photos">
+    <div class="lb-top">
+      <p class="lb-title"></p>
+      <div class="lb-tools">
+        <button type="button" id="lb-out" aria-label="Dézoomer"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+        <span class="zl">100 %</span>
+        <button type="button" id="lb-in" aria-label="Zoomer"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+        <button type="button" id="lb-reset" class="hide-sm" aria-label="Taille d'origine"><svg class="i" viewBox="0 0 24 24"><path d="M4 4v6h6M4.5 15a8 8 0 1 0 1.9-8.3L4 10"/></svg></button>
+        <a id="lb-full" class="hide-sm" href="#" target="_blank" rel="noopener" aria-label="Ouvrir l'image en haute définition"><svg class="i" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+        <button type="button" id="lb-close" aria-label="Fermer"><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+    </div>
+    <div class="lb-stage">
+      <img alt="" draggable="false" />
+      <div class="spinner"></div>
+      <button class="nav-arrow prev" type="button" aria-label="Photo précédente"><svg class="i" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="nav-arrow next" type="button" aria-label="Photo suivante"><svg class="i" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <p class="lb-help">Molette ou pincement pour zoomer · double-clic · glisser pour se déplacer</p>
+    </div>
+    <div class="lb-thumbs"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script type="module" src="catalogue.js"></script>
+</body>
+</html>
