@@ -415,3 +415,20 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
   .drag-hint { font-size: 9.5px; letter-spacing: .18em; }
   .carousel-ui { margin-top: 2vh; }
 }
+
+/* =====================================================================
+   MENU MOBILE (burger) — commun à toutes les pages
+   ===================================================================== */
+.burger { display: none; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(200, 167, 106, .4); background: transparent; color: var(--gold-light); cursor: pointer; place-items: center; padding: 0; }
+.burger svg { width: 18px; height: 18px; }
+.m-menu { position: fixed; inset: 0; z-index: 90; background: rgba(8, 27, 29, .98); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 90px 8vw 40px; display: flex; flex-direction: column; gap: 6px; overflow-y: auto;
+  opacity: 0; visibility: hidden; transform: translateY(-12px); transition: opacity .35s, transform .35s cubic-bezier(.2, .7, .2, 1), visibility .35s; }
+.m-menu.open { opacity: 1; visibility: visible; transform: none; }
+.m-menu a { color: var(--white); font-size: 22px; padding: 10px 0; border-bottom: 1px solid rgba(200, 167, 106, .15); }
+.m-menu a.sub { font-size: 16px; padding-left: 18px; color: #b9c4c0; }
+.m-menu a.on { color: var(--gold-light); }
+.m-menu .close { position: absolute; top: 20px; right: 5vw; display: grid; }
+.m-menu .m-cta { margin-top: 22px; border-bottom: none; justify-content: center; font-size: 15px; padding: 1em; color: #10292c; }
+body.lock { overflow: hidden; }
+@media (max-width: 980px) { .burger { display: grid; } }
+#loader.done { pointer-events: none; }
