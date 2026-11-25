@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vendez votre bien à Dakar — Estimation gratuite | REVA Immobilier</title>
+  <meta name="description" content="Vendez votre appartement, villa ou terrain à Dakar et au Sénégal avec REVA : estimation gratuite, photos professionnelles, diffusion au Sénégal et auprès de la diaspora, accompagnement jusqu'au notaire." />
+  <meta property="og:title" content="Vendez votre bien à Dakar — Estimation gratuite | REVA Immobilier" />
+  <meta property="og:description" content="Estimation gratuite, diffusion auprès des acheteurs au Sénégal et dans la diaspora, accompagnement jusqu'à la signature chez le notaire." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="catalogue.css" />
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body class="cat" data-page="vendez">
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="index.html" class="brand"><img src="assets/logo-reva.png" alt="REVA Immobilier" /></a>
+    <nav class="links">
+      <a href="index.html">Accueil</a>
+      <div class="dd">
+        <a href="ventes-directes.html">Achetez <i class="caret"></i></a>
+        <div class="dd-menu">
+          <a href="ventes-directes.html">Ventes directes</a>
+          <a href="biens-en-vefa.html">Biens en VEFA</a>
+          <a href="terrains.html">Terrains</a>
+        </div>
+      </div>
+      <a href="vendez.html" class="on">Vendez</a>
+      <div class="dd">
+        <a href="pret-immobilier.html">Financement <i class="caret"></i></a>
+        <div class="dd-menu">
+          <a href="co-financement.html">Co-financement</a>
+          <a href="pret-immobilier.html">Prêt immobilier</a>
+        </div>
+      </div>
+      <a href="diaspora.html">Diaspora</a>
+      <a href="index.html#studio">Qui sommes-nous ?</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <span class="lang"><b>FR</b> / EN</span>
+      <a href="#estimation" class="btn btn-gold">Estimer mon bien</a>
+      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+
+  <nav class="m-menu" id="m-menu" aria-label="Menu mobile">
+    <button class="burger close" id="m-close" type="button" aria-label="Fermer le menu" style="display:grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <a href="index.html">Accueil</a>
+    <a href="ventes-directes.html">Achetez</a>
+    <a class="sub" href="ventes-directes.html">Ventes directes</a>
+    <a class="sub" href="biens-en-vefa.html">Biens en VEFA</a>
+    <a class="sub" href="terrains.html">Terrains</a>
+    <a href="vendez.html" class="on">Vendez</a>
+    <a href="pret-immobilier.html">Financement</a>
+    <a class="sub" href="co-financement.html">Co-financement</a>
+    <a class="sub" href="pret-immobilier.html">Prêt immobilier</a>
+    <a href="diaspora.html">Diaspora</a>
+    <a href="index.html#studio">Qui sommes-nous ?</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <!-- ============ HERO : photo plein écran + estimation express ============ -->
+  <section class="v-hero">
+    <div class="v-bg" aria-hidden="true"><img src="assets/biens/25110-1.webp" alt="" fetchpriority="high" /></div>
+    <div class="container v-grid">
+      <div class="v-copy">
+        <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span>/</span><b>Vendez</b></nav>
+        <p class="v-kicker"><span>Vendez avec REVA</span></p>
+        <h1>Votre bien mérite<br/><em>le bon acheteur.</em></h1>
+        <p class="v-lead">Appartement, villa, immeuble ou terrain : nous estimons votre bien, le mettons en valeur et le présentons à des acheteurs qualifiés au Sénégal et dans la diaspora, jusqu'à la signature chez le notaire.</p>
+        <ul class="v-promise">
+          <li><b>Estimation offerte</b><span>sans engagement</span></li>
+          <li><b>Un seul conseiller</b><span>de A à Z</span></li>
+          <li><b>Acheteurs vérifiés</b><span>ici et à l'étranger</span></li>
+        </ul>
+      </div>
+
+      <form class="v-quick" id="v-quick">
+        <p class="v-quick-h"><i></i>Estimation express</p>
+        <h2>Combien vaut <em>votre bien ?</em></h2>
+        <label class="vq"><span>Type de bien</span>
+          <select name="type" required>
+            <option value="Appartement">Appartement</option><option value="Villa">Villa</option><option value="Studio">Studio</option>
+            <option value="Immeuble">Immeuble</option><option value="Terrain">Terrain</option><option value="Commerce">Commerce</option>
+          </select></label>
+        <label class="vq"><span>Quartier / ville</span><input name="quartier" list="quartiers" placeholder="Mermoz, Almadies, Saly…" autocomplete="off" required /></label>
+        <label class="vq"><span>Surface</span><span class="vq-suf"><input name="surface" type="number" min="10" inputmode="numeric" placeholder="120" required /><em>m²</em></span></label>
+        <button class="btn btn-gold" type="submit">Voir ma fourchette de prix →</button>
+        <p class="v-quick-f">Gratuit · résultat immédiat · basé sur les prix de notre catalogue</p>
+      </form>
+    </div>
+    <a href="#parcours-vente" class="v-scroll" aria-label="Défiler"><span></span></a>
+  </section>
+
+  <!-- ============ AVANTAGES ============ -->
+  <section class="perks"><div class="container">
+    <article class="perk rv"><span class="ico">◎</span><div><h3>Un prix fondé sur le marché</h3><p>Nous comparons votre bien aux ventes du quartier pour fixer un prix qui attire des acheteurs, sans brader.</p></div></article>
+    <article class="perk rv"><span class="ico">✦</span><div><h3>Un bien mis en valeur</h3><p>Photos professionnelles, annonce rédigée et fiche détaillée publiée sur notre catalogue en ligne.</p></div></article>
+    <article class="perk rv"><span class="ico">⌂</span><div><h3>Des acheteurs vérifiés</h3><p>Nous qualifions chaque acquéreur (budget, financement) avant toute visite de votre bien.</p></div></article>
+  </div></section>
+
+  <!-- ============ PROCESSUS ============ -->
+  <section class="sec dark" id="parcours-vente" style="margin-top:80px;scroll-margin-top:70px">
+    <div class="container">
+      <div class="sec-head rv">
+        <p class="eyebrow">Comment ça se passe</p>
+        <h2>De l'estimation <em>à la remise des clés.</em></h2>
+        <p>Un seul conseiller REVA vous accompagne à chaque étape. Vous savez toujours où en est votre vente.</p>
+      </div>
+      <div class="steps">
+        <div class="step rv"><div class="n">1</div><h3>Estimation</h3><p>Visite du bien, étude des documents et analyse des prix du quartier. Vous recevez un avis de valeur argumenté.</p><small>Gratuit</small></div>
+        <div class="step rv"><div class="n">2</div><h3>Mandat &amp; mise en valeur</h3><p>Nous signons le mandat, réalisons les photos et rédigeons l'annonce. Le bien est mis en ligne sur notre catalogue.</p><small>Sous 7 jours</small></div>
+        <div class="step rv"><div class="n">3</div><h3>Visites &amp; offres</h3><p>Diffusion auprès de nos acheteurs au Sénégal et dans la diaspora. Visites sur place ou en vidéo, offres négociées pour vous.</p><small>Compte rendu régulier</small></div>
+        <div class="step rv"><div class="n">4</div><h3>Signature</h3><p>Nous préparons le dossier avec le notaire et vous accompagnons jusqu'à la vente et la remise des clés.</p><small>Chez le notaire</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ESTIMATION ============ -->
+  <section class="sec" id="estimation" style="scroll-margin-top:70px">
+    <div class="container wiz-wrap">
+      <div class="wiz-side rv">
+        <p class="eyebrow" style="color:var(--gold-dark)">Estimation en ligne</p>
+        <h2>Combien vaut <em>votre bien ?</em></h2>
+        <p>Répondez à quelques questions : vous obtenez une première fourchette de prix, calculée à partir des biens comparables de notre catalogue. Un conseiller affine ensuite l'estimation lors d'une visite, gratuitement.</p>
+        <div class="contact-lines">
+          <a href="https://wa.me/221781752323" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg><span><small>WhatsApp</small>+221 78 175 23 23</span></a>
+          <a href="tel:+221338212082"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span><small>Bureau</small>+221 33 821 20 82</span></a>
+          <a href="mailto:info@reva.sn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><small>E-mail</small>info@reva.sn</span></a>
+        </div>
+      </div>
+
+      <form class="wiz rv" id="wiz-vendre" novalidate>
+        <div class="wiz-prog"></div>
+
+        <!-- 1. type -->
+        <div class="wiz-step">
+          <h3>Quel bien vendez-vous ?</h3>
+          <p class="hint">Choisissez le type de bien.</p>
+          <div class="opts" data-auto>
+            <label class="opt"><input type="radio" name="type" value="Appartement" required /><span><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M11 21v-3h2v3"/></svg>Appartement</span></label>
+            <label class="opt"><input type="radio" name="type" value="Villa" /><span><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-5h4v5"/></svg>Villa</span></label>
+            <label class="opt"><input type="radio" name="type" value="Studio" /><span><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="1"/><path d="M4 10h16M9 20v-4h6v4"/></svg>Studio</span></label>
+            <label class="opt"><input type="radio" name="type" value="Immeuble" /><span><svg viewBox="0 0 24 24"><path d="M4 21V5l8-2v18M12 7l8 2v12M7 8h2M7 12h2M7 16h2M15 12h2M15 16h2M2 21h20"/></svg>Immeuble</span></label>
+            <label class="opt"><input type="radio" name="type" value="Terrain" /><span><svg viewBox="0 0 24 24"><path d="M3 18l5-9 4 6 3-4 6 7z"/><path d="M3 21h18"/></svg>Terrain</span></label>
+            <label class="opt"><input type="radio" name="type" value="Commerce" /><span><svg viewBox="0 0 24 24"><path d="M4 9l1.5-5h13L20 9M4 9v11h16V9M4 9h16M9 20v-6h6v6"/></svg>Commerce</span></label>
+          </div>
+        </div>
+
+        <!-- 2. caractéristiques -->
+        <div class="wiz-step">
+          <h3>Ses caractéristiques</h3>
+          <p class="hint">Ces informations servent à trouver des biens comparables.</p>
+          <div class="fields">
+            <label class="field full"><span>Quartier / ville *</span><input name="quartier" list="quartiers" placeholder="Mermoz, Almadies, Saly…" required autocomplete="off" /></label>
+            <datalist id="quartiers"></datalist>
+            <label class="field"><span>Surface *</span><span class="suffix"><input name="surface" type="number" min="10" step="1" inputmode="numeric" placeholder="120" required /><em>m²</em></span></label>
+            <label class="field"><span>Chambres</span><select name="chambres"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option value="6+">6 et +</option></select></label>
+          </div>
+          <span class="lbl">État général</span>
+          <div class="opts sm">
+            <label class="opt"><input type="radio" name="etat" value="neuf" /><span>Neuf / récent</span></label>
+            <label class="opt"><input type="radio" name="etat" value="bon" checked /><span>Bon état</span></label>
+            <label class="opt"><input type="radio" name="etat" value="renover" /><span>À rafraîchir</span></label>
+          </div>
+          <span class="lbl">Document de propriété</span>
+          <div class="opts sm">
+            <label class="opt"><input type="radio" name="doc" value="Titre foncier" checked /><span>Titre foncier</span></label>
+            <label class="opt"><input type="radio" name="doc" value="Bail" /><span>Bail</span></label>
+            <label class="opt"><input type="radio" name="doc" value="Délibération" /><span>Délibération</span></label>
+            <label class="opt"><input type="radio" name="doc" value="Je ne sais pas" /><span>Je ne sais pas</span></label>
+          </div>
+        </div>
+
+        <!-- 3. estimation -->
+        <div class="wiz-step">
+          <h3>Votre fourchette indicative</h3>
+          <p class="hint">Calculée à partir des biens comparables de notre catalogue.</p>
+          <div class="est" id="est"></div>
+          <div class="fields" style="margin-top:20px">
+            <label class="field"><span>Votre prix souhaité (facultatif)</span><span class="suffix"><input name="prix" type="number" min="0" step="1000000" inputmode="numeric" placeholder="150000000" /><em>F CFA</em></span></label>
+            <label class="field"><span>Quand souhaitez-vous vendre ?</span><select name="delai"><option>Dès que possible</option><option>Dans les 3 mois</option><option>Dans les 6 mois</option><option>Je me renseigne</option></select></label>
+          </div>
+        </div>
+
+        <!-- 4. coordonnées -->
+        <div class="wiz-step">
+          <h3>Vos coordonnées</h3>
+          <p class="hint">Un conseiller vous rappelle sous 48 h pour fixer la visite d'estimation.</p>
+          <div class="fields">
+            <label class="field full"><span>Nom et prénom *</span><input name="nom" autocomplete="name" required /></label>
+            <label class="field"><span>Téléphone / WhatsApp *</span><input name="tel" type="tel" autocomplete="tel" placeholder="+221 77 000 00 00" required /></label>
+            <label class="field"><span>E-mail</span><input name="email" type="email" autocomplete="email" /></label>
+            <label class="field full"><span>Message</span><textarea name="msg" placeholder="Précisions sur le bien, disponibilités pour la visite…"></textarea></label>
+          </div>
+          <label class="consent"><input type="checkbox" name="ok" required /> J'accepte que REVA Immobilier utilise ces informations pour me recontacter au sujet de mon projet.</label>
+        </div>
+
+        <div class="wiz-nav">
+          <button type="button" class="btn btn-outline" data-prev>← Retour</button>
+          <span class="count-step"></span>
+          <button type="button" class="btn btn-green" data-next>Continuer →</button>
+          <button type="submit" class="btn btn-gold" data-send hidden>Envoyer ma demande</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ POURQUOI REVA ============ -->
+  <section class="sec" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head center rv">
+        <p class="eyebrow">Pourquoi REVA</p>
+        <h2>La force d'un réseau, <em>l'attention d'un conseiller.</em></h2>
+      </div>
+      <div class="feats">
+        <article class="feat rv">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+          <h3>Des acheteurs ici et à l'étranger</h3>
+          <p>Filiale d'Habiter.Biz, REVA présente votre bien à un large réseau d'acheteurs.</p>
+          <ul><li>Acheteurs résidents au Sénégal</li><li>Sénégalais de la diaspora (Europe, Amérique du Nord)</li><li>Visites vidéo pour les acheteurs à distance</li></ul>
+        </article>
+        <article class="feat rv">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+          <h3>Un dossier juridique solide</h3>
+          <p>Nous vérifions avec vous les pièces nécessaires avant la mise en vente pour éviter les mauvaises surprises.</p>
+          <ul><li>Titre foncier, bail ou délibération</li><li>Plans, permis de construire, quitus fiscal</li><li>Coordination avec le notaire</li></ul>
+        </article>
+        <article class="feat rv">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/></svg></div>
+          <h3>Un suivi transparent</h3>
+          <p>Vous êtes informé à chaque étape : visites réalisées, retours des acheteurs, offres reçues.</p>
+          <ul><li>Un interlocuteur unique</li><li>Comptes rendus de visite</li><li>Conseils pour ajuster le prix si besoin</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOCUMENTS ============ -->
+  <section class="sec" style="padding-top:0">
+    <div class="container split">
+      <div class="split-media rv">
+        <img src="assets/biens/24905-1.webp" alt="Immeuble proposé par REVA" loading="lazy" />
+        <div class="tag"><small>Bon à savoir</small><b>Un dossier complet dès le départ permet de signer plus vite.</b></div>
+      </div>
+      <div class="rv">
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="eyebrow">Préparer la vente</p>
+          <h2>Les documents <em>à rassembler.</em></h2>
+          <p>Pas d'inquiétude si certains manquent : nous vous indiquons comment les obtenir.</p>
+        </div>
+        <ul class="checklist">
+          <li><i>1</i><div><b>Pièce d'identité du ou des propriétaires</b><span>CNI ou passeport en cours de validité.</span></div></li>
+          <li><i>2</i><div><b>Document de propriété</b><span>Titre foncier, bail emphytéotique ou acte de délibération, avec l'état des droits réels récent.</span></div></li>
+          <li><i>3</i><div><b>Plans et autorisations</b><span>Plan cadastral, permis de construire, certificat de conformité s'il existe.</span></div></li>
+          <li><i>4</i><div><b>Situation fiscale et charges</b><span>Quittances d'impôt foncier et, en copropriété, le règlement et les charges.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="sec" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head center rv">
+        <p class="eyebrow">Questions fréquentes</p>
+        <h2>Vendre avec REVA, <em>en clair.</em></h2>
+      </div>
+      <div class="faq rv">
+        <details open><summary>L'estimation est-elle vraiment gratuite ?</summary><div class="a">Oui. La visite d'estimation et l'avis de valeur sont <b>gratuits et sans engagement</b>. Vous décidez ensuite si vous souhaitez nous confier la vente.</div></details>
+        <details><summary>Comment est calculée l'estimation en ligne ?</summary><div class="a">Elle se fonde sur le <b>prix au mètre carré médian des biens comparables</b> de notre catalogue (même type, même quartier si possible), ajusté selon l'état du bien. C'est une première indication : seule la visite permet de tenir compte de l'emplacement exact, des finitions et des documents.</div></details>
+        <details><summary>Quels sont vos honoraires ?</summary><div class="a">Nos honoraires sont fixés dans le mandat de vente, avant toute mise en ligne, et ne sont dus <b>qu'en cas de vente</b>. Votre conseiller vous les présente lors du rendez-vous d'estimation.</div></details>
+        <details><summary>Je vis à l'étranger, puis-je vendre à distance ?</summary><div class="a">Oui. Nous gérons les visites sur place et vous tenons informé par WhatsApp ou en visio. La signature peut se faire par <b>procuration notariée</b>. Voir aussi notre page <a href="diaspora.html" style="color:var(--gold-dark);text-decoration:underline">Diaspora</a>.</div></details>
+        <details><summary>Mon bien n'a pas de titre foncier, puis-je le vendre ?</summary><div class="a">Un bien sous bail ou délibération peut se vendre, mais les démarches et le prix diffèrent. Nous étudions votre situation et vous conseillons, y compris sur une éventuelle <b>transformation en titre foncier</b>.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPEL À L'ACTION ============ -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-box rv">
+        <div>
+          <h2>Prêt à vendre ?<br/><em>Parlons de votre bien.</em></h2>
+          <p>Un conseiller REVA vous rappelle sous 48 h pour organiser la visite d'estimation, gratuite et sans engagement.</p>
+        </div>
+        <div class="acts">
+          <a class="btn btn-gold" href="#estimation">Estimer mon bien →</a>
+          <a class="btn btn-line" href="https://wa.me/221781752323" target="_blank" rel="noopener">WhatsApp · +221 78 175 23 23</a>
+          <a class="btn btn-line" href="tel:+221338212082">Bureau · +221 33 821 20 82</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="f-brand">
+        <img src="assets/logo-reva.png" alt="REVA Immobilier" />
+        <p>Filiale d'Habiter.Biz, premier réseau sénégalais de l'immobilier. Spécialiste exclusif de la vente de biens au Sénégal et à l'international.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.2V10H7v4h3v6h4v-6h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9zM17 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1zm4 2.2A5.6 5.6 0 0 0 15.8 3H8.2A5.6 5.6 0 0 0 3 8.2v7.6A5.6 5.6 0 0 0 8.2 21h7.6a5.6 5.6 0 0 0 5.2-5.2zM19.3 15.8a3.6 3.6 0 0 1-3.5 3.5H8.2a3.6 3.6 0 0 1-3.5-3.5V8.2a3.6 3.6 0 0 1 3.5-3.5h7.6a3.6 3.6 0 0 1 3.5 3.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M5 3.5A2 2 0 1 1 5 7.5a2 2 0 0 1 0-4zM3.3 9h3.4v11H3.3zM9 9h3.3v1.5c.5-.9 1.7-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.4V20h-3.4v-5.2c0-1.3 0-2.9-1.8-2.9s-2.1 1.4-2.1 2.8V20H9z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="vendez.html">Vendez</a></li>
+          <li><a href="pret-immobilier.html">Financement</a></li>
+          <li><a href="diaspora.html">Diaspora</a></li>
+          <li><a href="index.html#studio">Qui sommes-nous ?</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Achetez</h4>
+        <ul>
+          <li><a href="ventes-directes.html">Ventes directes</a></li>
+          <li><a href="biens-en-vefa.html">Biens en VEFA</a></li>
+          <li><a href="terrains.html">Terrains</a></li>
+          <li><a href="co-financement.html">Co-financement</a></li>
+          <li><a href="pret-immobilier.html">Prêt immobilier</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="f-contact">
+          <li>Fann Résidence, Immeuble Nelly,<br/>2ème étage, Dakar</li>
+          <li><a href="tel:+221338212082">+221 33 821 20 82</a></li>
+          <li><a href="tel:+221781752323">+221 78 175 23 23</a></li>
+          <li><a href="mailto:info@reva.sn">info@reva.sn</a></li>
+        </ul>
+        <a href="vendez.html#estimation" class="btn btn-gold">Estimer mon bien</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 REVA Immobilier — Filiale Habiter.Biz. Tous droits réservés.</span>
+      <span><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a> · <a href="#">CGV</a></span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script type="module" src="pages.js"></script>
+</body>
+</html>

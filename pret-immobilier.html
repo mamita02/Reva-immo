@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prêt immobilier au Sénégal — Simulateur de crédit | REVA Immobilier</title>
+  <meta name="description" content="Simulez votre prêt immobilier au Sénégal : mensualité, capacité d'emprunt, coût du crédit. REVA vous aide à monter votre dossier bancaire, à Dakar ou depuis la diaspora." />
+  <meta property="og:title" content="Prêt immobilier au Sénégal — Simulateur de crédit | REVA Immobilier" />
+  <meta property="og:description" content="Simulez votre prêt immobilier au Sénégal : mensualité, capacité d'emprunt, coût du crédit. REVA vous aide à monter votre dossier bancaire, à Dakar ou depuis la diaspora." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="catalogue.css" />
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body class="cat" data-page="pret">
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="index.html" class="brand"><img src="assets/logo-reva.png" alt="REVA Immobilier" /></a>
+    <nav class="links">
+      <a href="index.html">Accueil</a>
+      <div class="dd">
+        <a href="ventes-directes.html">Achetez <i class="caret"></i></a>
+        <div class="dd-menu">
+          <a href="ventes-directes.html">Ventes directes</a>
+          <a href="biens-en-vefa.html">Biens en VEFA</a>
+          <a href="terrains.html">Terrains</a>
+        </div>
+      </div>
+      <a href="vendez.html">Vendez</a>
+      <div class="dd">
+        <a href="pret-immobilier.html" class="on">Financement <i class="caret"></i></a>
+        <div class="dd-menu">
+          <a href="co-financement.html">Co-financement</a>
+          <a href="pret-immobilier.html" class="on">Prêt immobilier</a>
+        </div>
+      </div>
+      <a href="diaspora.html">Diaspora</a>
+      <a href="index.html#studio">Qui sommes-nous ?</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <span class="lang"><b>FR</b> / EN</span>
+      <a href="#simulateur" class="btn btn-gold">Simuler mon prêt</a>
+      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+
+  <nav class="m-menu" id="m-menu" aria-label="Menu mobile">
+    <button class="burger close" id="m-close" type="button" aria-label="Fermer le menu" style="display:grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <a href="index.html">Accueil</a>
+    <a href="ventes-directes.html">Achetez</a>
+    <a class="sub" href="ventes-directes.html">Ventes directes</a>
+    <a class="sub" href="biens-en-vefa.html">Biens en VEFA</a>
+    <a class="sub" href="terrains.html">Terrains</a>
+    <a href="vendez.html">Vendez</a>
+    <a href="pret-immobilier.html">Financement</a>
+    <a class="sub" href="co-financement.html">Co-financement</a>
+    <a class="sub on" href="pret-immobilier.html">Prêt immobilier</a>
+    <a href="diaspora.html">Diaspora</a>
+    <a href="index.html#studio">Qui sommes-nous ?</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <!-- ============ HERO : mensualité + skyline du capital restant dû ============ -->
+  <section class="p-hero">
+    <div class="container p-grid">
+      <div>
+        <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span>/</span><a href="pret-immobilier.html">Financement</a><span>/</span><b>Prêt immobilier</b></nav>
+        <p class="p-kicker"><b>Financement</b> Prêt immobilier</p>
+        <h1>Devenez propriétaire,<br/><em>mois après mois.</em></h1>
+        <p class="p-lead">Simulez votre crédit, connaissez votre capacité d'emprunt et laissez REVA monter votre dossier bancaire avec vous, que vous viviez à Dakar ou à l'étranger.</p>
+        <div class="hero-cta">
+          <a href="#simulateur" class="btn btn-gold btn-lg">Simuler mon prêt ↓</a>
+          <a href="https://wa.me/221781752323?text=Bonjour%20REVA%2C%20j'ai%20besoin%20d'aide%20pour%20financer%20mon%20achat." target="_blank" rel="noopener" class="btn btn-line btn-lg">Parler à un conseiller</a>
+        </div>
+      </div>
+      <div class="p-fig">
+        <small>Exemple de mensualité</small>
+        <span class="p-big" id="p-big">—</span>
+        <span class="p-unit">F CFA par mois</span>
+        <p id="p-fig-txt"></p>
+        <div class="p-chips" id="p-chips" role="group" aria-label="Durée de l'exemple">
+          <button type="button" data-y="10">10 ans</button><button type="button" data-y="15">15 ans</button><button type="button" data-y="20" class="on">20 ans</button><button type="button" data-y="25">25 ans</button>
+        </div>
+      </div>
+    </div>
+    <div class="p-sky" aria-hidden="true">
+      <div class="p-sky-bars" id="p-sky"></div>
+      <div class="p-sky-l"><span>Année 1</span><span>Capital restant dû, année après année</span><span id="p-sky-end">Année 20</span></div>
+    </div>
+  </section>
+
+  <!-- ============ AVANTAGES ============ -->
+  <section class="perks"><div class="container">
+    <article class="perk rv"><span class="ico">◎</span><div><h3>Un dossier bien monté</h3><p>Nous vous aidons à réunir les pièces et à présenter un dossier complet à la banque.</p></div></article>
+    <article class="perk rv"><span class="ico">✦</span><div><h3>Des documents du bien prêts</h3><p>Promesse de vente, titre de propriété, plans : la banque a tout ce qu'il lui faut sur le bien.</p></div></article>
+    <article class="perk rv"><span class="ico">⌂</span><div><h3>Résidents et diaspora</h3><p>Salarié, entrepreneur ou Sénégalais de l'extérieur : nous adaptons le dossier à votre situation.</p></div></article>
+  </div></section>
+
+  <!-- ============ SIMULATEUR ============ -->
+  <section class="sec" id="simulateur" style="scroll-margin-top:70px">
+    <div class="container">
+      <div class="sec-head rv">
+        <p class="eyebrow">Simulateur</p>
+        <h2>Calculez votre crédit <em>en direct.</em></h2>
+        <p>Deux façons de commencer : à partir du prix du bien qui vous plaît, ou à partir de vos revenus pour connaître le budget à viser.</p>
+      </div>
+
+      <div class="sim rv">
+        <div class="sim-in">
+          <div class="sim-tabs" role="tablist">
+            <button type="button" class="on" data-pane="mens" role="tab">Ma mensualité</button>
+            <button type="button" data-pane="cap" role="tab">Ma capacité d'emprunt</button>
+          </div>
+
+          <!-- mensualité -->
+          <div class="sim-pane on" id="pane-mens">
+            <div class="srow"><div class="srow-h"><label for="s-prix">Prix du bien</label><output><input id="s-prix-n" inputmode="numeric" /> F</output></div><input type="range" id="s-prix" min="10000000" max="500000000" step="1000000" value="90000000" /></div>
+            <div class="srow"><div class="srow-h"><label for="s-apport">Apport personnel</label><output><input id="s-apport-n" inputmode="numeric" /> F</output></div><input type="range" id="s-apport" min="0" max="250000000" step="500000" value="15000000" /><p class="sub" id="s-apport-pct"></p></div>
+            <div class="srow"><div class="srow-h"><label for="s-taux">Taux d'intérêt annuel</label><output id="s-taux-o"></output></div><input type="range" id="s-taux" min="4" max="12" step="0.1" value="7.5" /></div>
+            <div class="srow"><div class="srow-h"><label for="s-duree">Durée</label><output id="s-duree-o"></output></div><input type="range" id="s-duree" min="5" max="25" step="1" value="20" /></div>
+            <div class="srow"><div class="srow-h"><label for="s-frais">Frais d'acquisition estimés</label><output id="s-frais-o"></output></div><input type="range" id="s-frais" min="0" max="15" step="0.5" value="10" /><p class="sub">Notaire, enregistrement, frais de dossier : un pourcentage à confirmer avec le notaire et la banque.</p></div>
+          </div>
+
+          <!-- capacité -->
+          <div class="sim-pane" id="pane-cap">
+            <div class="srow"><div class="srow-h"><label for="c-rev">Revenus nets mensuels du foyer</label><output><input id="c-rev-n" inputmode="numeric" /> F</output></div><input type="range" id="c-rev" min="200000" max="10000000" step="50000" value="1500000" /><p class="sub">Salaires, revenus réguliers ; pour la diaspora, convertissez vos revenus en F CFA (1 € = 655,957 F).</p></div>
+            <div class="srow"><div class="srow-h"><label for="c-char">Crédits en cours (mensualités)</label><output><input id="c-char-n" inputmode="numeric" /> F</output></div><input type="range" id="c-char" min="0" max="3000000" step="25000" value="0" /></div>
+            <div class="srow"><div class="srow-h"><label for="c-end">Taux d'endettement maximal</label><output id="c-end-o"></output></div><input type="range" id="c-end" min="25" max="45" step="1" value="33" /><p class="sub">Les banques retiennent souvent environ un tiers des revenus ; la règle exacte dépend de chaque établissement.</p></div>
+            <div class="srow"><div class="srow-h"><label for="c-taux">Taux d'intérêt annuel</label><output id="c-taux-o"></output></div><input type="range" id="c-taux" min="4" max="12" step="0.1" value="7.5" /></div>
+            <div class="srow"><div class="srow-h"><label for="c-duree">Durée</label><output id="c-duree-o"></output></div><input type="range" id="c-duree" min="5" max="25" step="1" value="20" /></div>
+            <div class="srow"><div class="srow-h"><label for="c-apport">Apport disponible</label><output><input id="c-apport-n" inputmode="numeric" /> F</output></div><input type="range" id="c-apport" min="0" max="250000000" step="500000" value="10000000" /></div>
+          </div>
+        </div>
+
+        <!-- résultats -->
+        <div class="sim-out" id="out-mens">
+          <small>Votre mensualité estimée</small>
+          <p class="sim-big" id="o-mens">—<span>F CFA / mois</span></p>
+          <div class="sim-donut">
+            <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="48" stroke="rgba(255,255,255,.1)"/><circle id="d-cap" cx="60" cy="60" r="48" stroke="#e3c992" stroke-dasharray="0 302"/><circle id="d-int" cx="60" cy="60" r="48" stroke="#5f8f86" stroke-dasharray="0 302"/></svg>
+            <div class="sim-leg">
+              <div><span><i style="background:#e3c992"></i>Capital emprunté</span><b id="o-cap">—</b></div>
+              <div><span><i style="background:#5f8f86"></i>Intérêts</span><b id="o-int">—</b></div>
+              <div><span>Coût total du crédit</span><b id="o-tot">—</b></div>
+            </div>
+          </div>
+          <div class="sim-lines">
+            <div><span>Montant à emprunter</span><b id="o-emp">—</b></div>
+            <div><span>Frais d'acquisition estimés</span><b id="o-frais">—</b></div>
+            <div><span>Budget total (prix + frais)</span><b id="o-budget">—</b></div>
+            <div><span>Revenus conseillés (≈ ⅓ d'endettement)</span><b id="o-rev">—</b></div>
+          </div>
+          <p class="warn" id="o-warn"></p>
+          <div class="sim-acts">
+            <button type="button" class="btn btn-gold" id="send-mens">Envoyer ma simulation à un conseiller →</button>
+            <a class="btn btn-line" id="see-mens" href="ventes-directes.html">Voir les biens à ce prix</a>
+          </div>
+          <p class="sim-note">Simulation indicative à mensualités constantes, hors assurance et frais de garantie. Les conditions réelles (taux, durée, apport exigé) sont fixées par la banque après étude de votre dossier.</p>
+        </div>
+
+        <div class="sim-out" id="out-cap" hidden>
+          <small>Vous pourriez emprunter environ</small>
+          <p class="sim-big" id="k-max">—<span>F CFA</span></p>
+          <div class="sim-lines" style="margin-top:22px">
+            <div><span>Mensualité maximale</span><b id="k-mens">—</b></div>
+            <div><span>Apport disponible</span><b id="k-apport">—</b></div>
+            <div><span>Budget d'achat (frais inclus ≈ 10 %)</span><b id="k-budget">—</b></div>
+          </div>
+          <div class="match" id="k-match" style="margin-top:22px"></div>
+          <p class="warn" id="k-warn"></p>
+          <div class="sim-acts">
+            <button type="button" class="btn btn-gold" id="send-cap">Faire étudier mon dossier →</button>
+          </div>
+          <p class="sim-note">Estimation indicative fondée sur le taux d'endettement choisi, hors assurance. Seule la banque peut confirmer le montant accordé.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ÉTAPES ============ -->
+  <section class="sec dark">
+    <div class="container">
+      <div class="sec-head rv">
+        <p class="eyebrow">Les étapes</p>
+        <h2>De la simulation <em>à l'offre de prêt.</em></h2>
+        <p>Votre conseiller REVA reste à vos côtés pendant toute la démarche bancaire.</p>
+      </div>
+      <div class="steps">
+        <div class="step rv"><div class="n">1</div><h3>Simulation &amp; budget</h3><p>Nous faisons le point sur vos revenus, votre apport et le budget réaliste à viser.</p><small>Rendez-vous offert</small></div>
+        <div class="step rv"><div class="n">2</div><h3>Choix du bien</h3><p>Vous choisissez un bien dans votre budget. Nous préparons la promesse de vente et les documents du bien.</p><small>Ventes · VEFA · Terrains</small></div>
+        <div class="step rv"><div class="n">3</div><h3>Dossier bancaire</h3><p>Nous vous aidons à constituer un dossier complet et à le présenter aux banques.</p><small>Pièces vérifiées</small></div>
+        <div class="step rv"><div class="n">4</div><h3>Offre &amp; signature</h3><p>Après accord de la banque, signature chez le notaire et déblocage des fonds. Vous recevez les clés.</p><small>Chez le notaire</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOCUMENTS ============ -->
+  <section class="sec">
+    <div class="container">
+      <div class="sec-head center rv">
+        <p class="eyebrow">Votre dossier</p>
+        <h2>Les pièces <em>généralement demandées.</em></h2>
+        <p>La liste exacte dépend de la banque ; voici ce qu'il est utile de préparer.</p>
+      </div>
+      <div class="feats">
+        <article class="feat rv">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="9.5" cy="10" r="2"/><path d="M7 16c.6-1.6 1.6-2.4 2.5-2.4s1.9.8 2.5 2.4M14 9h3M14 12h3"/></svg></div>
+          <h3>Identité &amp; situation</h3>
+          <ul><li>Pièce d'identité en cours de validité</li><li>Justificatif de domicile</li><li>Situation familiale (acte de mariage, etc.)</li></ul>
+        </article>
+        <article class="feat rv">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/></svg></div>
+          <h3>Revenus</h3>
+          <ul><li>Salarié : 3 derniers bulletins de salaire, attestation de travail</li><li>Indépendant : bilans et relevés d'activité</li><li>Relevés bancaires des derniers mois</li></ul>
+        </article>
+        <article class="feat rv">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-5h4v5"/></svg></div>
+          <h3>Le bien</h3>
+          <ul><li>Promesse ou compromis de vente</li><li>Copie du titre de propriété du vendeur</li><li>Pour la VEFA : contrat de réservation et échéancier</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="sec" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head center rv">
+        <p class="eyebrow">Questions fréquentes</p>
+        <h2>Le crédit immobilier, <em>simplement.</em></h2>
+      </div>
+      <div class="faq rv">
+        <details open><summary>Quel apport faut-il prévoir ?</summary><div class="a">Cela dépend de la banque et de votre profil. Un apport permet surtout de <b>couvrir les frais d'acquisition</b> et de rassurer la banque. Votre conseiller vous indique le montant à viser après étude de votre situation.</div></details>
+        <details><summary>Quel taux d'intérêt utiliser dans le simulateur ?</summary><div class="a">Le taux proposé par défaut est un <b>exemple</b>. Les taux varient selon la banque, la durée et votre profil : remplacez-le par celui de votre offre pour obtenir une simulation fidèle.</div></details>
+        <details><summary>Je vis à l'étranger, puis-je emprunter pour acheter au Sénégal ?</summary><div class="a">Oui, certaines banques financent les Sénégalais de l'extérieur. Les pièces demandées sont adaptées (revenus à l'étranger, relevés de compte). Consultez aussi notre page <a href="diaspora.html" style="color:var(--gold-dark);text-decoration:underline">Diaspora</a>.</div></details>
+        <details><summary>Peut-on financer un bien en VEFA ou un terrain ?</summary><div class="a">Oui, sous conditions. Pour la VEFA, les fonds sont <b>débloqués au fil de l'avancement des travaux</b>. Pour un terrain, la banque regarde notamment la nature du titre de propriété.</div></details>
+        <details><summary>Et si mon budget ne suffit pas seul ?</summary><div class="a">Vous pouvez acheter à plusieurs : famille, associés, proches dans la diaspora. Découvrez notre solution de <a href="co-financement.html" style="color:var(--gold-dark);text-decoration:underline">co-financement</a>.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPEL À L'ACTION ============ -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-box rv">
+        <div>
+          <h2>Votre projet mérite<br/><em>un bon financement.</em></h2>
+          <p>Un conseiller REVA étudie votre situation et vous aide à préparer un dossier solide pour la banque.</p>
+        </div>
+        <div class="acts">
+          <a class="btn btn-gold" href="#simulateur">Simuler mon prêt →</a>
+          <a class="btn btn-line" href="https://wa.me/221781752323" target="_blank" rel="noopener">WhatsApp · +221 78 175 23 23</a>
+          <a class="btn btn-line" href="co-financement.html">Acheter à plusieurs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="f-brand">
+        <img src="assets/logo-reva.png" alt="REVA Immobilier" />
+        <p>Filiale d'Habiter.Biz, premier réseau sénégalais de l'immobilier. Spécialiste exclusif de la vente de biens au Sénégal et à l'international.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.2V10H7v4h3v6h4v-6h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9zM17 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1zm4 2.2A5.6 5.6 0 0 0 15.8 3H8.2A5.6 5.6 0 0 0 3 8.2v7.6A5.6 5.6 0 0 0 8.2 21h7.6a5.6 5.6 0 0 0 5.2-5.2zM19.3 15.8a3.6 3.6 0 0 1-3.5 3.5H8.2a3.6 3.6 0 0 1-3.5-3.5V8.2a3.6 3.6 0 0 1 3.5-3.5h7.6a3.6 3.6 0 0 1 3.5 3.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M5 3.5A2 2 0 1 1 5 7.5a2 2 0 0 1 0-4zM3.3 9h3.4v11H3.3zM9 9h3.3v1.5c.5-.9 1.7-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.4V20h-3.4v-5.2c0-1.3 0-2.9-1.8-2.9s-2.1 1.4-2.1 2.8V20H9z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="vendez.html">Vendez</a></li>
+          <li><a href="pret-immobilier.html">Financement</a></li>
+          <li><a href="diaspora.html">Diaspora</a></li>
+          <li><a href="index.html#studio">Qui sommes-nous ?</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Achetez</h4>
+        <ul>
+          <li><a href="ventes-directes.html">Ventes directes</a></li>
+          <li><a href="biens-en-vefa.html">Biens en VEFA</a></li>
+          <li><a href="terrains.html">Terrains</a></li>
+          <li><a href="co-financement.html">Co-financement</a></li>
+          <li><a href="pret-immobilier.html">Prêt immobilier</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="f-contact">
+          <li>Fann Résidence, Immeuble Nelly,<br/>2ème étage, Dakar</li>
+          <li><a href="tel:+221338212082">+221 33 821 20 82</a></li>
+          <li><a href="tel:+221781752323">+221 78 175 23 23</a></li>
+          <li><a href="mailto:info@reva.sn">info@reva.sn</a></li>
+        </ul>
+        <a href="vendez.html#estimation" class="btn btn-gold">Estimer mon bien</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 REVA Immobilier — Filiale Habiter.Biz. Tous droits réservés.</span>
+      <span><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a> · <a href="#">CGV</a></span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script type="module" src="pages.js"></script>
+</body>
+</html>
